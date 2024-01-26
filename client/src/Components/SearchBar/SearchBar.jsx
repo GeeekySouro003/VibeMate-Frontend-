@@ -10,7 +10,7 @@ const SearchBar = () => {
        <div className="Search">
         <input type="text" placeholder='Find the perfect choice' />
         <div className="s-icon">
-        <MdPersonSearch />
+        <MdPersonSearch size={19}/>
         </div>
        </div>
     </div>

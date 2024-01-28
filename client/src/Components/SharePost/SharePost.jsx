@@ -9,12 +9,21 @@ import { UilTimes } from '@iconscout/react-unicons';
 
 const SharePost = () => {
   const [image, setImage] = useState(null);
+  const [video, setVideo] = useState(null);
   const imageRef = useRef();
+  const videoRef = useRef();
 
   const onImgChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const img = e.target.files[0];
       setImage(URL.createObjectURL(img));
+    }
+  };
+
+  const onVideoChange = (e) => {
+    if (e.target.files && e.target.files[0]) {
+      const vid = e.target.files[0];
+      setVideo(URL.createObjectURL(vid));
     }
   };
 
@@ -33,7 +42,11 @@ const SharePost = () => {
             <MdAddPhotoAlternate size={21} />
             Images
           </div>
-          <div className="opt" style={{ color: '38b000' }}>
+          <div
+            className="opt"
+            style={{ color: '#38b000' }}
+            onClick={() => videoRef.current.click()}
+          >
             <RiVideoAddFill size={21} />
             Videos
           </div>
@@ -48,25 +61,25 @@ const SharePost = () => {
           <button type="button" className="share-button">
             <span className="button__text">Share Now</span>
             <span className="button__icon">
-            <svg
-  xmlns="http://www.w3.org/2000/svg"
-  fill="none"
-  viewBox="0 0 24 24"
-  stroke="currentColor"
-  className="svg"
->
-  <path
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    strokeWidth="2"
-    d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-  />
-</svg>
-
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
             </span>
           </button>
           <div style={{ display: 'none' }}>
             <input type="file" name="myimg" ref={imageRef} onChange={onImgChange} />
+            <input type="file" name="myvideo" ref={videoRef} onChange={onVideoChange} />
           </div>
         </div>
 
@@ -76,6 +89,14 @@ const SharePost = () => {
             <img src={image} alt="selected" className="img" />
           </div>
         )}
+
+{video && (
+  <div className="prevVideo">
+    <UilTimes className="icon" onClick={() => setVideo(null)} /> 
+    <video controls src={video} className="video" />
+  </div>
+)}
+
       </div>
     </div>
   );

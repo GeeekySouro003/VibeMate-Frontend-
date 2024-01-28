@@ -1,6 +1,7 @@
 import React from 'react'
-import Cover from '../../images/cover.jpg'
-import ProfilePic from '../../images/profile.jpg'
+import Cover from '../../images/cover.png'
+import ProfilePic from '../../images/profile pic.png'
+import CountUp from 'react-countup';
 import './ProfileCard.css';
  
 const ProfileCard = () => {
@@ -19,19 +20,23 @@ const ProfileCard = () => {
         <hr />
         <div>
             <div className="followers">
-                <span>568</span>
+                <span>
+                    <CountUp start ={0} end={568} duration={5} />
+                </span>
                 <span>Followers</span>
             </div>
 
             <div className="vl"></div>
                 <div className="following">
-                    <span>35</span>
+                    <span> <CountUp end={56} duration={4} /></span>
                     <span>Following</span>
                 </div>
-            
-            <hr />
         </div>
+        <hr />
     </div>
+    <span>
+        My Profile
+    </span>
    </div>
   )
 }

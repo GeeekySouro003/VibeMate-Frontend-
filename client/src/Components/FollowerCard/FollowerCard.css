@@ -1,0 +1,82 @@
+.FollowerCard{
+    width: 100%;
+    border-radius: 1rem;
+    gap: 1.5rem;
+    display: flex;
+    margin-top: 1.8rem;
+    flex-direction: column;
+    font-size: 13px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
+
+}
+
+.follower{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.follower>div{
+    display: flex;
+    gap: 13px
+}
+.followerimg{
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 50%;
+}
+
+.followername{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.followername>span:nth-of-type(1){
+    font-weight: 900;
+}
+
+.followbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0.5em;
+    background: #9d4edd;
+    color: white;
+    border: none;
+    border-radius: 0.625em;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+   }
+   
+.followbtn:hover {
+    color: black;
+   }
+   
+   .followbtn:after {
+    content: "";
+    background: #cdb4db;
+    position: absolute;
+    z-index: -1;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(-45deg) scale(0, 1);
+    transition: all 0.5s;
+   }
+   
+   button:hover:after {
+    transform: skewX(-45deg) scale(1, 1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+   }

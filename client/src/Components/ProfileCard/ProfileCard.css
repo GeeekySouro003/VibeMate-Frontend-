@@ -1,0 +1,103 @@
+.ProfileCard{
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+
+}
+
+.ProfileImg{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ProfileImg>img:nth-of-type(1) {
+    width: 100%;
+}
+.ProfileImg>img:nth-of-type(2) {
+    width: 5.5rem;
+    border-radius: 35%;
+    position: absolute;
+    bottom: -2.8rem;
+    box-shadow: var(--profileShadow);
+}
+
+.ProfileName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 6px;
+}
+
+.ProfileName>span:nth-of-type(1){
+    font-weight: 800;
+    font-family: 'Poppins';
+}
+
+.follow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.follow>hr{
+    width: 85%;
+    border: 1px solid rgb(58, 55, 55);
+}
+
+.follow>div{
+    display: flex;
+    gap: 2.3rem;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.followers{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.followers>span:nth-of-type(1)
+{
+    font-weight: 900;
+}
+
+.followers>span:nth-of-type(2)
+{
+font-size: 12px;
+color: var(--gray);
+}
+
+.following{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+
+}
+.following>span:nth-of-type(1)
+{
+    font-weight: 900;
+}
+.following>span:nth-of-type(2)
+{
+    font-size: 12px;
+    color: var(--gray);
+}
+
+.vl {
+    height: 150%;
+    border-left: 2px solid var(--hrColor);
+  }
+

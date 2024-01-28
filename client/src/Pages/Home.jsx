@@ -1,12 +1,15 @@
 import React from 'react'
 import './Home.css';
 import Profileside from '../Components/Profileside/Profileside';
+import PostSection from '../Components/PostSection/PostSection';
+import TrendSide from '../Components/TrendSide/TrendSide';
 
 const Home = () => {
   return (
     <div className="Home">
         <Profileside />
-        <div className="Post">Posts</div>
+        <PostSection />
+        <TrendSide/>
         <div className="Trends">Trending</div>
     </div>
   )

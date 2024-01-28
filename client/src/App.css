@@ -30,3 +30,7 @@
 
 
 }
+
+::-webkit-scrollbar{
+    display: none;
+}

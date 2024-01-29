@@ -1,6 +1,5 @@
 import React from 'react'
-import SearchBar from '../SearchBar/SearchBar.jsx';
-import './ProfileStats.css';
+import SearchBar from '../SearchBar/SearchBar.jsx'
 import InformationCard from '../InformationCard/InformationCard.jsx';
 import FollowerCard from '../FollowerCard/FollowerCard.jsx';
 const ProfileStats = () => {

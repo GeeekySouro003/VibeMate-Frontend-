@@ -1,0 +1,23 @@
+.Auth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    gap: 4rem;
+    position: relative;
+}
+
+.Auth>div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-left{
+    gap:2rem;
+}   
+
+.auth-left>img{
+    width: 4rem;
+    height: 4rem;
+}

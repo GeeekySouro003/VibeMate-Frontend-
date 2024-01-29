@@ -2,7 +2,7 @@ import React from 'react'
 import SearchBar from '../SearchBar/SearchBar.jsx'
 import ProfileCard from '../ProfileCard/ProfileCard.jsx'
 import FollowerCard from '../FollowerCard/FollowerCard.jsx';
-import './ProfileSide.css';
+import './Profileside.css';
 
 const Profileside = () => {
   return (

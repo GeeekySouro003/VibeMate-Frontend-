@@ -1,8 +1,8 @@
 import React from 'react'
 import './Home.css';
-import Profileside from '../Components/Profileside/Profileside';
-import PostSection from '../Components/PostSection/PostSection';
-import TrendSide from '../Components/TrendSide/TrendSide';
+import Profileside from '../../Components/Profileside/Profileside';
+import PostSection from '../../Components/PostSection/PostSection';
+import TrendSide from '../../Components/TrendSide/TrendSide';
 
 const Home = () => {
   return (

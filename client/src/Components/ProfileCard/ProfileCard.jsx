@@ -5,6 +5,8 @@ import CountUp from 'react-countup';
 import './ProfileCard.css';
  
 const ProfileCard = () => {
+
+    const ProfilePage=true;
   return (
    <div className="ProfileCard">
     <div className="ProfileImg">
@@ -26,17 +28,26 @@ const ProfileCard = () => {
                 <span>Followers</span>
             </div>
 
+            {ProfilePage && (
+            <>
+              <div className="vl"></div>
+              <div className="post">
+                <span>3</span>
+                <span>Posts</span>
+              </div>
+            </>
+          )}
+
             <div className="vl"></div>
                 <div className="following">
                     <span> <CountUp end={56} duration={4} /></span>
                     <span>Following</span>
                 </div>
+                
         </div>
         <hr />
     </div>
-    <span>
-        My Profile
-    </span>
+    {ProfilePage ? "" : <span>My Profile</span>}
    </div>
   )
 }

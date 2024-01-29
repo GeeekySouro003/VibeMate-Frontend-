@@ -2,5 +2,11 @@
     position: relative;
     display:grid;
     grid-template-columns: 18rem auto 20rem;
-    gap: 1rem;
+    gap:40px;
+}
+
+.profile-center{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

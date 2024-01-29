@@ -101,6 +101,23 @@ color: var(--gray);
     font-weight: 800;
     color: var(--gray);
 }
+.post{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+.post>span:nth-of-type(1)
+{
+    font-weight: 900;
+    font-size: 18px;
+}
+.post>span:nth-of-type(2){
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--gray);
+}
 
 .vl {
     height: 150%;

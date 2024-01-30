@@ -13,7 +13,7 @@ function App() {
       <div className="bg" style={{top:'36%',left:'-8rem'}}></div>
     {/*  <Home/> */}
     <Profile/> 
-   {/*<Auth/>*/}
+   {/*<Auth/> */}
      </div>
 
     </>

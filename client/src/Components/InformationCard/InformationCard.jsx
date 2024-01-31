@@ -1,10 +1,14 @@
+// InformationCard.jsx
+
 import React, { useState } from 'react';
 import { FaUserEdit } from "react-icons/fa";
 import './InformationCard.css';
-import ProfileModal from '../ProfileModal/ProfileModal';
+import ProfileModal from '../ProfileModal/ProfileModal.jsx';
 
 const InformationCard = () => {
- const[modalOpened,setModalOpened]=useState(false);
+  const [modalOpened, setModalOpened] = useState(false);
+
+  console.log("modalOpened in InformationCard:", modalOpened);
 
   return (
     <div className="InformationCard">
@@ -12,32 +16,22 @@ const InformationCard = () => {
         <h3>About Yourself!</h3>
         <div>
           <FaUserEdit size={25} onClick={() => setModalOpened(true)} />
-          <ProfileModal modalOpened={modalOpened}
-          setModalOpened={setModalOpened}
-          />
+          <ProfileModal modalOpened={modalOpened} setModalOpened={setModalOpened} />
         </div>
       </div>
-      
-   
 
       <div className="info">
-        <span>
-          <b>Recent Work: </b>
-        </span>
+        <span><b>Recent Work: </b></span>
         <span>Created a Poster</span>
       </div>
-       
+
       <div className="info">
-        <span>
-          <b>Resides at: </b>
-        </span>
+        <span><b>Resides at: </b></span>
         <span>Bengaluru</span>
       </div>
 
       <div className="info">
-        <span>
-          <b>Specializes in: </b>
-        </span>
+        <span><b>Specializes in: </b></span>
         <span>Social Media Marketing</span>
       </div>
 

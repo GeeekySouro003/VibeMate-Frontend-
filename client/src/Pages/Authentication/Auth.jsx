@@ -1,18 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Auth.css';
-import Logo from '../../images/logo.jpg';
+import Logo from '../../images/logo_new.png';
 
 const Auth = () => {
+  const[isSignUp,setIsSignUp] =useState(false);
   return (
     <div className="Auth">
         <div className="auth-left">
-          <img src={Logo} style={{width:'50px'}} alt='auth page left side' />
+          <img src={Logo} style={{width:'180px',height:'180px'}} alt='auth page left side' />
           <div className="webname">
             <h1>VibeMate</h1>
             <h5>Crafting Connections, Building Futures</h5>
           </div>
          </div>
-         <LogIn/>
+         <SignUp/>
     </div>
   );
 };
@@ -55,7 +56,7 @@ function SignUp() {
   return (
     <div className="auth-right">
       <form className="infoForm authForm">
-        <h3>Sign Up</h3>
+        <h3>{isSignUp ? "Sign Up" :"Log In"}</h3>
 
         <div>
           <input type="text" placeholder='First Name' className='infoInput' name='firstname' />

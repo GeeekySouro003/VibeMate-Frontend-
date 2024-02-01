@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose } from 'redux'; // Import named exports directly
+import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux'; // Import named exports directly
 import { thunk } from 'redux-thunk'; // Import the thunk named export
 import { reducers } from '../Reducers';
 

@@ -6,19 +6,29 @@ import { RiVideoAddFill } from 'react-icons/ri';
 import { MdAddLocationAlt } from 'react-icons/md';
 import { FaRegFaceGrinBeam } from 'react-icons/fa6';
 import { UilTimes } from '@iconscout/react-unicons';
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadImage, uploadPost } from '../../Actions/UploadAction';
 
 const SharePost = () => {
+  const loading=useSelector((state)=>state.PostReducer.uploading)
   const [image, setImage] = useState(null);
   const [video, setVideo] = useState(null);
+  const {user}=useSelector((state)=>state.AuthReducer.authData)
   const imageRef = useRef();
   const videoRef = useRef();
-
+  const desc=useRef();
+  const dispatch = useDispatch();
   const onImgChange = (e) => {
     if (e.target.files && e.target.files[0]) {
       const img = e.target.files[0];
-      setImage(URL.createObjectURL(img));
+      setImage(img);
     }
   };
+
+  const reset= () => {
+    setImage(null);
+    desc.current.value="null"
+  }
 
   const onVideoChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -27,12 +37,37 @@ const SharePost = () => {
     }
   };
 
+  const handleSubmit = (e)=> {
+    e.preventDefault();
+
+    const newPost= {
+      profileId:user._id,
+      desc:desc.current.value
+    }
+    if(image) {
+      const data=new FormData()
+      const filename=Date.now() + image.name;
+      data.append("name", filename)
+      data.append("file",image);
+      newPost.image=filename
+      console.log(newPost)
+      try{
+          dispatch(uploadImage(data))
+      }
+      catch(err){
+        console.log(err);
+      }
+    }
+    dispatch(uploadPost(newPost))
+    reset();
+  }
+
   return (
     <div className="SharePost">
       <img src={ProfilePic} alt="profile pic of share" />
 
       <div>
-        <input type="text" placeholder="Flex your work!" />
+        <input ref={desc} required type="text" placeholder="Flex your work!" />
         <div className="postoption">
           <div
             className="opt"
@@ -58,8 +93,9 @@ const SharePost = () => {
             <FaRegFaceGrinBeam size={21} />
             Feeling
           </div>
-          <button type="button" className="share-button">
-            <span className="button__text">Share Now</span>
+          <button type="button" className="share-button button_text"  onClick={handleSubmit}>
+            {loading? "Uploading..,":"Share"}
+            <span className="button__text"></span>
             <span className="button__icon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +122,7 @@ const SharePost = () => {
         {image && (
           <div className="prevImage">
             <UilTimes onClick={() => setImage(null)} />
-            <img src={image} alt="selected" className="img" />
+            <img src={URL .createObjectURL(image)} alt="selected" className="img" />
           </div>
         )}
 

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import './Auth.css';
 import Logo from '../../images/logo_new.png';
 import { logIn, signUp } from '../../Actions/AuthAction';
 
 const Auth = () => {
   const[isSignUp,setIsSignUp] =useState(true);
+  const loading=useSelector((state)=>state.AuthReducer.loading)  
+  console.log(loading);
   const dispatch=useDispatch();
-  const[data,setData]=useState({firstname:"",lastname:"",username:"",password:"",confirmpass:""})
+  const[data,setData]=useState({firstname:"",middlename:"",lastname:"",username:"",password:"",confirmpass:""})
   const[confirmpass,setconfirmpass] = useState(true);
 
   const handleChange =(event) => {
@@ -29,7 +31,7 @@ const Auth = () => {
 
   const resetform= () => {
     setconfirmpass(true);
-    setData({firstname:"",lastname:"",username:"",password:"",confirmpass:""});
+    setData({firstname:"",lastname:"",middlename:"",username:"",password:"",confirmpass:""});
   };
   return (
     <div className="Auth">
@@ -49,6 +51,7 @@ const Auth = () => {
        {isSignUp && (
           <div>
           <input type="text" placeholder='First Name' className='infoInput' name='firstname' onChange={handleChange} value={data.firstname}/>
+          <input type="text" placeholder='Middle Name' className='infoInput' name='middlename' onChange={handleChange} value={data.middlename}/>
           <input type='text' placeholder='Last Name' className='infoInput' name='lastname'  onChange={handleChange} value={data.lastname}/>
         </div>
        )}
@@ -74,7 +77,9 @@ const Auth = () => {
           {isSignUp ? "Already have an account! Login" : "Don't have an account yet? Sign Up"}
         </span>
         </div>
-         <button className="button infoButton" type="submit"> {isSignUp ? "Sign Up" : "Log In"}</button>
+         <button className="button infoButton" type="submit" > 
+         {loading? "Loading..." :isSignUp ? "Sign Up" : "Log In"}
+         </button>
         
       </form>
     </div>

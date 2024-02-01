@@ -1,11 +1,38 @@
 import React, { useState } from 'react'
+import {useDispatch} from 'react-redux'
 import './Auth.css';
 import Logo from '../../images/logo_new.png';
 
 const Auth = () => {
-  const[isSignUp,setIsSignUp] =useState(false);
+  const[isSignUp,setIsSignUp] =useState(true);
+  const dispatch=useDispatch();
+  const[data,setData]=useState({firstname:"",lastname:"",username:"",password:"",confirmpass:""})
+  const[confirmpass,setconfirmpass] = useState(true);
+
+  const handleChange =(event) => {
+   setData({...data,[event.target.name]:event.target.value})
+  };
+
+
+  const handleSubmit =(event) => {
+    event.preventDefault();
+    if(isSignUp)
+    {
+      data.password===data.confirmpass ? dispatch(signUp(data)) :setconfirmpass(false);
+    }
+    else{
+      dispatch(logIn(data))
+    }
+
+  };
+
+  const resetform= () => {
+    setconfirmpass(true);
+    setData({firstname:"",lastname:"",username:"",password:"",confirmpass:""});
+  };
   return (
     <div className="Auth">
+      {/*LEFT SIDE*/}
         <div className="auth-left">
           <img src={Logo} style={{width:'180px',height:'180px'}} alt='auth page left side' />
           <div className="webname">
@@ -13,72 +40,46 @@ const Auth = () => {
             <h5>Crafting Connections, Building Futures</h5>
           </div>
          </div>
-         <SignUp/>
+         {/*RIGHT SIDE*/}
+         <div className="auth-right">
+      <form className="infoForm authForm" onSubmit={handleSubmit}>
+        <h3>{isSignUp ? "Sign Up" :"Log In"}</h3>
+
+       {isSignUp && (
+          <div>
+          <input type="text" placeholder='First Name' className='infoInput' name='firstname' onChange={handleChange} value={data.firstname}/>
+          <input type='text' placeholder='Last Name' className='infoInput' name='lastname'  onChange={handleChange} value={data.lastname}/>
+        </div>
+       )}
+      
+
+        <div>
+          <input type='text' placeholder="Username" className='infoInput' name='username'  onChange={handleChange} value={data.username}/>
+
+        </div>
+        <div>
+          <input type='password' className='infoInput' name='password' placeholder='Enter your password'  onChange={handleChange} value={data.password}/>
+
+          {isSignUp &&
+              <input type='password' className='infoInput' name='confirmpass' placeholder='Confirm Password'  onChange={handleChange} value={data.confirmpass}/>
+          }
+        
+        </div>
+          <span style={{display:confirmpass? "none": "block",color:"red",fontSize:"13px",alignSelf:"flex-end",marginRight:"5px"}}>
+            * Confirm Password is not same
+          </span>
+        <div>
+        <span style={{fontSize: '13px',cursor:'pointer'}} onClick={() =>{setIsSignUp((prev)=>!prev);resetform()}}>
+          {isSignUp ? "Already have an account! Login" : "Don't have an account yet? Sign Up"}
+        </span>
+        </div>
+         <button className="button infoButton" type="submit"> {isSignUp ? "Sign Up" : "Log In"}</button>
+        
+      </form>
+    </div>
     </div>
   );
 };
-function LogIn() {
-  return (
-    <div className="a-right">
-      <form className="infoForm authForm">
-        <h3>Log In</h3>
 
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            className="infoInput"
-            name="username"
-          />
-        </div>
-
-        <div>
-          <input
-            type="password"
-            className="infoInput"
-            placeholder="Password"
-            name="password"
-          />
-        </div>
-
-        <div>
-            <span style={{ fontSize: "12px" }}>
-              Don't have an account Sign up
-            </span>
-          <button className="btn infoButton">Login</button>
-        </div>
-      </form>
-    </div>
-  );
-}
-
-function SignUp() {
-  return (
-    <div className="auth-right">
-      <form className="infoForm authForm">
-        <h3>{isSignUp ? "Sign Up" :"Log In"}</h3>
-
-        <div>
-          <input type="text" placeholder='First Name' className='infoInput' name='firstname' />
-          <input type='text' placeholder='Last Name' className='infoInput' name='lastname' />
-        </div>
-
-        <div>
-          <input type='text' placeholder="Username" className='infoInput' name='username' />
-
-        </div>
-        <div>
-          <input type='text' className='infoInput' name='password' placeholder='Enter your password' />
-          <input type='text' className='infoInput' name='confirmpass' placeholder='Confirm Password' />
-        </div>
-
-        <div>
-        <span style={{fontSize: '12px'}}>Already have an account. Login!</span>
-        </div>
-         <button className="button infoButton" type="submit">Signup</button>
-      </form>
-    </div>
-  )
-}
 
 export default Auth

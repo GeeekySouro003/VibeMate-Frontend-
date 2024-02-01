@@ -16,6 +16,9 @@
 .auth-left {
   gap: 2rem;
 }
+div>span{
+  font-family:Verdana, Geneva, Tahoma, sans-serif
+}
 
 .auth-left > img {
   width: 4rem;
@@ -152,8 +155,3 @@
   }
 }
 
-.btn {
-  border-radius: 15px;
-  background-color: #3f37c9;
-  color: white;
-}

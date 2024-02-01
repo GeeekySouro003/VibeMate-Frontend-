@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useDispatch} from 'react-redux'
 import './Auth.css';
 import Logo from '../../images/logo_new.png';
+import { logIn, signUp } from '../../Actions/AuthAction';
 
 const Auth = () => {
   const[isSignUp,setIsSignUp] =useState(true);

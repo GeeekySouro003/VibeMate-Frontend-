@@ -7,7 +7,7 @@ import { MdAddLocationAlt } from 'react-icons/md';
 import { FaRegFaceGrinBeam } from 'react-icons/fa6';
 import { UilTimes } from '@iconscout/react-unicons';
 import { useDispatch, useSelector } from 'react-redux';
-import { uploadImage, uploadPost } from '../../Actions/UploadAction';
+import { uploadImage, uploadPost } from '../../Actions/uploadAction.js';
 
 const SharePost = () => {
   const loading=useSelector((state)=>state.PostReducer.uploading)
@@ -40,7 +40,7 @@ const SharePost = () => {
   const handleSubmit = (e)=> {
     e.preventDefault();
 
-    const newPost= {
+    const newpost= {
       profileId:user._id,
       desc:desc.current.value
     }
@@ -49,8 +49,8 @@ const SharePost = () => {
       const filename=Date.now() + image.name;
       data.append("name", filename)
       data.append("file",image);
-      newPost.image=filename
-      console.log(newPost)
+      newpost.image=filename
+      console.log(newpost)
       try{
           dispatch(uploadImage(data))
       }
@@ -58,7 +58,7 @@ const SharePost = () => {
         console.log(err);
       }
     }
-    dispatch(uploadPost(newPost))
+    dispatch(uploadPost(newpost))
     reset();
   }
 
